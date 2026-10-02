@@ -221,6 +221,11 @@
             color: #7f8c8d;
             margin-top: 20px;
         }
+
+        /* Container Youtube Tersembunyi */
+        #youtube-player {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -231,11 +236,8 @@
         <button class="open-btn" onclick="openInvitation()">Open Invitation</button>
     </div>
 
-    <!-- Audio Player Tersembunyi -->
-    <audio id="bgMusic" loop>
-        <source src="Where_You_Belong.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <!-- Container Youtube Player (Disembunyikan) -->
+    <div id="youtube-player"></div>
 
     <!-- Kartu Ucapan -->
     <div class="card">
@@ -283,11 +285,33 @@
         </div>
     </div>
 
+    <!-- Load YouTube Iframe API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
+        // ID Video dari link yang kamu kirimkan: https://youtu.be/G1xiFRccd88
+        const YOUTUBE_VIDEO_ID = 'G1xiFRccd88'; 
+
+        let player;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player', {
+                height: '0',
+                width: '0',
+                videoId: YOUTUBE_VIDEO_ID,
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'loop': 1,
+                    'playlist': YOUTUBE_VIDEO_ID
+                }
+            });
+        }
+
         function openInvitation() {
-            // Memutar musik
-            const music = document.getElementById('bgMusic');
-            music.play();
+            // Memutar musik Youtube jika player sudah siap
+            if (player && player.playVideo) {
+                player.playVideo();
+            }
 
             // Menghilangkan overlay
             const overlay = document.getElementById('overlay');
