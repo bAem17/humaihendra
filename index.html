@@ -20,11 +20,11 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            overflow: hidden;
+            overflow-x: hidden;
             position: relative;
         }
 
-        /* Overlay Pembuka (Untuk bypass aturan autoplay browser) */
+        /* Overlay Pembuka */
         #overlay {
             position: fixed;
             top: 0;
@@ -102,6 +102,23 @@
             z-index: 10;
         }
 
+        /* Bingkai Foto Mempelai */
+        .photo-container {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #e0c3fc;
+            box-shadow: 0 8px 20px rgba(107, 76, 154, 0.2);
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .header-subtitle {
             font-size: 0.9rem;
             letter-spacing: 3px;
@@ -156,6 +173,11 @@
 
     <!-- Kartu Ucapan -->
     <div class="card">
+        <!-- Foto Mempelai -->
+        <div class="photo-container">
+            <img src="humaihendra.jpeg" alt="Humaira & Rahendra">
+        </div>
+
         <div class="header-subtitle">Wedding Celebration</div>
         <h1 class="names">Humaira & Rahendra</h1>
         <div class="divider"></div>
