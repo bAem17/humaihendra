@@ -89,28 +89,64 @@
 
         /* Kartu Utama */
         .card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.93);
             backdrop-filter: blur(10px);
-            border: 2px solid #e0c3fc;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             max-width: 650px;
             width: 100%;
-            padding: 40px;
+            padding: 50px 40px;
             text-align: center;
             position: relative;
             z-index: 10;
         }
 
-        /* Bingkai Foto Mempelai */
+        /* Border Ornamen Bunga Kartu */
+        .floral-border {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 2px solid #e0c3fc;
+            border-radius: 12px;
+            pointer-events: none;
+        }
+
+        .floral-corner {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            font-size: 24px;
+            color: #b38add;
+            line-height: 1;
+        }
+
+        .top-left { top: -12px; left: -10px; }
+        .top-right { top: -12px; right: -10px; transform: scaleX(-1); }
+        .bottom-left { bottom: -12px; left: -10px; transform: scaleY(-1); }
+        .bottom-right { bottom: -12px; right: -10px; transform: scale(-1); }
+
+        /* Pembungkus & Bingkai Foto Mempelai Berbunga */
+        .photo-wrapper {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 25px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .photo-container {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 20px auto;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             overflow: hidden;
-            border: 4px solid #e0c3fc;
+            border: 3px solid #e0c3fc;
             box-shadow: 0 8px 20px rgba(107, 76, 154, 0.2);
+            position: relative;
+            z-index: 2;
         }
 
         .photo-container img {
@@ -118,6 +154,24 @@
             height: 100%;
             object-fit: cover;
         }
+
+        /* Ornamen Bunga Melingkar di Sekitar Foto */
+        .photo-floral-badge {
+            position: absolute;
+            font-size: 22px;
+            z-index: 3;
+            pointer-events: none;
+            filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.15));
+        }
+
+        .photo-f1 { top: -2px; left: 50%; transform: translateX(-50%); }
+        .photo-f2 { bottom: -2px; left: 50%; transform: translateX(-50%); }
+        .photo-f3 { top: 50%; left: -2px; transform: translateY(-50%); }
+        .photo-f4 { top: 50%; right: -2px; transform: translateY(-50%); }
+        .photo-f5 { top: 15px; left: 15px; }
+        .photo-f6 { top: 15px; right: 15px; }
+        .photo-f7 { bottom: 15px; left: 15px; }
+        .photo-f8 { bottom: 15px; right: 15px; }
 
         .header-subtitle {
             font-size: 0.9rem;
@@ -136,10 +190,22 @@
         }
 
         .divider {
-            width: 80px;
+            width: 100px;
             height: 2px;
-            background: linear-gradient(to right, #8e9eab, #e0c3fc, #8e9eab);
+            background: linear-gradient(to right, transparent, #e0c3fc, transparent);
             margin: 20px auto;
+            position: relative;
+        }
+
+        .divider::after {
+            content: '🌸';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            background: #fff;
+            padding: 0 5px;
         }
 
         .message {
@@ -173,9 +239,28 @@
 
     <!-- Kartu Ucapan -->
     <div class="card">
-        <!-- Foto Mempelai -->
-        <div class="photo-container">
-            <img src="humaihendra.jpeg" alt="Humaira & Rahendra">
+        <!-- Border Bunga Kartu -->
+        <div class="floral-border">
+            <div class="floral-corner top-left">🌸</div>
+            <div class="floral-corner top-right">🌸</div>
+            <div class="floral-corner bottom-left">🌸</div>
+            <div class="floral-corner bottom-right">🌸</div>
+        </div>
+
+        <!-- Foto Mempelai dengan Hiasan Bunga Melingkar -->
+        <div class="photo-wrapper">
+            <div class="photo-floral-badge photo-f1">🌸</div>
+            <div class="photo-floral-badge photo-f2">🌸</div>
+            <div class="photo-floral-badge photo-f3">🌸</div>
+            <div class="photo-floral-badge photo-f4">🌸</div>
+            <div class="photo-floral-badge photo-f5">🌺</div>
+            <div class="photo-floral-badge photo-f6">🌺</div>
+            <div class="photo-floral-badge photo-f7">🌺</div>
+            <div class="photo-floral-badge photo-f8">🌺</div>
+
+            <div class="photo-container">
+                <img src="humaihendra.jpeg" alt="Humaira & Rahendra">
+            </div>
         </div>
 
         <div class="header-subtitle">Wedding Celebration</div>
